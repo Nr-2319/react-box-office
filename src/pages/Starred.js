@@ -1,7 +1,8 @@
 import React from 'react';
+import MainPageLayout from '../components/MainPageLayout';
 
 const second = () => {
-    return <div>hello Starred Page</div>;
+    return <MainPageLayout>hello Starred Page</MainPageLayout>;
 };
 
 export default second;
