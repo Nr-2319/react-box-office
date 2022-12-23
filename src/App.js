@@ -1,17 +1,26 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Second from './pages/Second';
+
+// COMPONENT IMPORT
+import Nav from './components/Nav';
+
+// PAGES IMPORT
+import Starred from './pages/Starred';
 import Error from './pages/Error';
 import Home from './pages/Home';
 
 function App() {
     return (
-        <Routes>
-            <Route path="/second" exact element={<Second />} />
-            <Route path="/" exact element={<Home />} />
+        <div>
+            <Nav />
 
-            <Route path="*" element={<Error />} />
-        </Routes>
+            <Routes>
+                <Route path="/starred" exact element={<Starred />} />
+                <Route path="/" exact element={<Home />} />
+
+                <Route path="*" element={<Error />} />
+            </Routes>
+        </div>
     );
 }
 
