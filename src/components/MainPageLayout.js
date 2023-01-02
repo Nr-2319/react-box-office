@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from './Nav';
 import Title from './Title';
 
-const mainPageLayout = ({ children }) => {
+const MainPageLayout = ({ children }) => {
     return (
         <div>
             <Title
@@ -15,4 +15,4 @@ const mainPageLayout = ({ children }) => {
     );
 };
 
-export default mainPageLayout;
+export default MainPageLayout;
