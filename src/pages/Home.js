@@ -1,43 +1,47 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 import MainPageLayout from '../components/MainPageLayout';
+import { apiGet } from '../misc/config';
 
 const Home = () => {
     const [input, setInput] = useState('');
+    const [results, setResults] = useState(null);
 
     const onInputChange = ev => {
         setInput(ev.target.value);
     };
 
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key':
-                'e4cddd9948msh9834d1463b7340bp1d4fd0jsn53049e202097',
-            'X-RapidAPI-Host': 'anime-db.p.rapidapi.com',
-        },
-    };
-
     const onSearch = () => {
-        fetch(
-            `https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=${input}`,
-            options
-        )
-            .then(r => r.json())
-            .then(result => console.log(result))
+        apiGet(`/anime?page=1&size=10&search=${input}`)
+            .then(result => {
+                setResults(result.data);
+            })
             .catch(err => console.error(err));
-
-        // fetch(`https://api.tvmaze.com/search/shows?q=${input}`)
-        //     .then(r => r.json())
-        //     .then(result => {
-        //         console.log(result);
-        //     });
     };
 
     const onKeyDown = ev => {
         if (ev.keyCode === 13) {
             onSearch();
         }
+    };
+
+    const renderResults = () => {
+        if (results && results.length === 0) {
+            return <div>No Results</div>;
+        }
+
+        if (results && results.length > 0) {
+            return (
+                <div>
+                    {results.map(item => (
+                        <div key={item._id}>{item.title}</div>
+                    ))}
+                </div>
+            );
+        }
+
+        return null;
     };
 
     return (
@@ -51,6 +55,7 @@ const Home = () => {
             <button type="button" onClick={onSearch}>
                 Search
             </button>
+            {renderResults()}
         </MainPageLayout>
     );
 };
