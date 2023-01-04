@@ -11,6 +11,7 @@ function App() {
             <Routes>
                 <Route path="/" exact element={<Home />} />
                 <Route path="/starred" exact element={<Starred />} />
+                <Route exact path="/show/:id" />
             </Routes>
         </div>
     );
