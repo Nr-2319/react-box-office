@@ -1,18 +1,19 @@
 import React from 'react';
-import Nav from './Nav';
+import Navs from './Navs';
 import Title from './Title';
 
 const MainPageLayout = ({ children }) => {
-    return (
-        <div>
-            <Title
-                mainTitle="ANIME OFFICE"
-                subtitle="Are you looking for an Anime ?"
-            />
-            <Nav />
-            {children}
-        </div>
-    );
+  return (
+    <div>
+      <Title
+        title="Box Office"
+        subtitle="Are you looking for a movie or an actor?"
+      />
+      <Navs />
+
+      {children}
+    </div>
+  );
 };
 
 export default MainPageLayout;
