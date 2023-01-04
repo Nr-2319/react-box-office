@@ -3,10 +3,11 @@
 import React from 'react';
 import GenreCard from './GenreCard';
 import IMAGE_NOT_FOUND from '../../images/not-found.png';
+import { FlexGrid } from '../styled';
 
 const GenreGrid = ({ data }) => {
     return (
-        <div>
+        <FlexGrid>
             {data.map(item => (
                 <GenreCard
                     key={item._id}
@@ -17,7 +18,7 @@ const GenreGrid = ({ data }) => {
                     status={item.status}
                 />
             ))}
-        </div>
+        </FlexGrid>
     );
 };
 

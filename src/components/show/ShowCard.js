@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { StyledShowCard } from './ShowCard.styled';
 
 const ShowCard = ({ id, image, name, synopsis, status, genresIncluded }) => {
     const synopsisAsText = synopsis
@@ -12,24 +13,24 @@ const ShowCard = ({ id, image, name, synopsis, status, genresIncluded }) => {
         : 'No Description Available';
 
     return (
-        <div>
-            <div>
+        <StyledShowCard>
+            <div className="img-wrapper">
                 <img src={image} alt="show" />
             </div>
 
-            <h1>{name}</h1>
+            <h2>{name}</h2>
             <p>{synopsisAsText}</p>
             <p>{status}</p>
-            <div>
+            <div className="animeGenres">
                 {genresIncluded.map(element => (
                     <i>{element}&ensp;</i>
                 ))}
             </div>
-            <div>
+            <div className="btns">
                 <Link to={`/show/${id}`}>Read more</Link>
                 <button type="button">Wishlist</button>
             </div>
-        </div>
+        </StyledShowCard>
     );
 };
 
