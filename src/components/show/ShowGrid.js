@@ -10,6 +10,7 @@ const ShowGrid = ({ data }) => {
     const [starredShows, dispatchStarred] = useShows();
 
     return (
+        
         <FlexGrid>
             {data.map(({ show }) => {
                 const isStarred = starredShows.includes(show.id);
